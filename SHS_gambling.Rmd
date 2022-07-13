@@ -72,7 +72,7 @@ for (i in seq_along(measures)){
 
 ```
 
-## Percentage of respondents answering "Yes" to spending money on the following, split by deprivation quintile
+## Percentage of respondents answering "Yes" to spending money on the following, split by SIMD deprivation quintile
 
 ```{r grid_2, out.width = "100%", echo=FALSE, message=FALSE, warning=FALSE, fig.width=10,fig.height=3, ,results="asis"}
 
@@ -82,7 +82,7 @@ df_plot <- df_data %>%
 
 df_plot$measure_map <- gsub('Spent any money on:', '', df_plot$measure_map)
 
-df_plot$category <- ordered(df_plot$category, levels = c("least_deprived", "x2", "x3", "x4", "most_deprived"))
+df_plot$category <- ordered(df_plot$category, levels = c("least_deprived", "x4", "x3", "x2", "most_deprived"))
 
 measures <- unique(df_plot$measure_map)
 
@@ -103,7 +103,7 @@ for (i in seq_along(measures)){
     scale_fill_viridis(direction = -1, option = "B", begin = 0.25, end = 0.75, alpha = 0.5) +
     geom_hline(yintercept=c(1.5,2.5,3.5,4.5,5.5,6.5,7.5)) +
     geom_text(aes(label = round(value, 1))) +
-    ylab("Age groups") +
+    ylab("SIMD Quintile") +
     theme_classic() + 
     facet_wrap(~ sex, labeller = label_wrap_gen(), ncol=3) +
     theme(panel.grid.major = element_blank(),
@@ -119,7 +119,7 @@ for (i in seq_along(measures)){
 
 ```
 
-## Percentage of respondents answering "Yes" to spending money on the following, split by income
+## Percentage of respondents answering "Yes" to spending money on the following, split by equivalised income quintiles
 
 ```{r grid_3, out.width = "100%", echo=FALSE, message=FALSE, warning=FALSE, fig.width=10,fig.height=3, ,results="asis"}
 
@@ -128,6 +128,8 @@ df_plot <- df_data %>%
            description =="equivalised_income")
 
 df_plot$measure_map <- gsub('Spent any money on:', '', df_plot$measure_map)
+
+df_plot$category <- ordered(df_plot$category, levels = c("top_quintile", "x2", "x3", "x4", "bottom_quintile"))
 
 measures <- unique(df_plot$measure_map)
 
@@ -148,7 +150,7 @@ for (i in seq_along(measures)){
     scale_fill_viridis(direction = -1, option = "B", begin = 0.25, end = 0.75, alpha = 0.5) +
     geom_hline(yintercept=c(1.5,2.5,3.5,4.5,5.5,6.5,7.5)) +
     geom_text(aes(label = round(value, 1))) +
-    ylab("Age groups") +
+    ylab("Income quintiles") +
     theme_classic() + 
     facet_wrap(~ sex, labeller = label_wrap_gen(), ncol=3) +
     theme(panel.grid.major = element_blank(),
