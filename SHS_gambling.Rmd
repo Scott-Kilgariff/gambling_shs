@@ -32,8 +32,6 @@ df_data <- read_csv("df_sheet.csv")
 
 df_plot <- df_data %>% 
   filter(response == "Yes" & 
-           #sex == "Male" & 
-           #answer_code_map == "GALJ Spent any money on: Online gambling" & 
            description =="age_grp")
 
 df_plot$measure_map <- gsub('Spent any money on:', '', df_plot$measure_map)
@@ -55,7 +53,6 @@ for (i in seq_along(measures)){
   p <- ggplot(df_plot_slice, aes(year, category, fill=value)) +
     geom_raster() +
     scale_y_discrete(limits=rev, labels= c("75+", "65 to 74","55 to 64","45 to 54","35 to 44","25 to 34","16 to 24")) +
-    #scale_fill_viridis(direction = -1, option = "B", begin = c_scale_start, end = c_scale_end) +
     scale_fill_viridis(direction = -1, option = "B", begin = 0.25, end = 0.75, alpha = 0.5) +
     geom_hline(yintercept=c(1.5,2.5,3.5,4.5,5.5,6.5,7.5)) +
     geom_text(aes(label = round(value, 1))) +
@@ -79,12 +76,8 @@ for (i in seq_along(measures)){
 
 ```{r grid_2, out.width = "100%", echo=FALSE, message=FALSE, warning=FALSE, fig.width=10,fig.height=3, ,results="asis"}
 
-#df_data <- read_csv("df_sheet.csv")
-
 df_plot <- df_data %>% 
   filter(response == "Yes" & 
-           #sex == "Male" & 
-           #answer_code_map == "GALJ Spent any money on: Online gambling" & 
            description =="simd_quintiles")
 
 df_plot$measure_map <- gsub('Spent any money on:', '', df_plot$measure_map)
@@ -107,8 +100,6 @@ for (i in seq_along(measures)){
   
   p <- ggplot(df_plot_slice, aes(year, category, fill=value)) +
     geom_raster() +
-    #scale_y_discrete(limits=rev, labels= c("75+", "65 to 74","55 to 64","45 to 54","35 to 44","25 to 34","16 to 24")) +
-    #scale_fill_viridis(direction = -1, option = "B", begin = c_scale_start, end = c_scale_end) +
     scale_fill_viridis(direction = -1, option = "B", begin = 0.25, end = 0.75, alpha = 0.5) +
     geom_hline(yintercept=c(1.5,2.5,3.5,4.5,5.5,6.5,7.5)) +
     geom_text(aes(label = round(value, 1))) +
@@ -132,17 +123,11 @@ for (i in seq_along(measures)){
 
 ```{r grid_3, out.width = "100%", echo=FALSE, message=FALSE, warning=FALSE, fig.width=10,fig.height=3, ,results="asis"}
 
-#df_data <- read_csv("df_sheet.csv")
-
 df_plot <- df_data %>% 
   filter(response == "Yes" & 
-           #sex == "Male" & 
-           #answer_code_map == "GALJ Spent any money on: Online gambling" & 
            description =="equivalised_income")
 
 df_plot$measure_map <- gsub('Spent any money on:', '', df_plot$measure_map)
-
-#df_plot$category <- ordered(df_plot$category, levels = c("least_deprived", "x2", "x3", "x4", "most_deprived"))
 
 measures <- unique(df_plot$measure_map)
 
@@ -160,8 +145,6 @@ for (i in seq_along(measures)){
   
   p <- ggplot(df_plot_slice, aes(year, category, fill=value)) +
     geom_raster() +
-    #scale_y_discrete(limits=rev, labels= c("75+", "65 to 74","55 to 64","45 to 54","35 to 44","25 to 34","16 to 24")) +
-    #scale_fill_viridis(direction = -1, option = "B", begin = c_scale_start, end = c_scale_end) +
     scale_fill_viridis(direction = -1, option = "B", begin = 0.25, end = 0.75, alpha = 0.5) +
     geom_hline(yintercept=c(1.5,2.5,3.5,4.5,5.5,6.5,7.5)) +
     geom_text(aes(label = round(value, 1))) +
