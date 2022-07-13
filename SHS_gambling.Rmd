@@ -1,0 +1,183 @@
+---
+title: "Scottish Health Survey Gambling Data"
+author: "Scott Kilgariff"
+date: "08/07/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+Data extracted from <a href = "https://www.gov.scot/collections/scottish-health-survey/", target = "_blank"> Scottish Health Survey </a> (SHS) covering the period from 2012 to 2017.
+
+Data for 2021 is expected to be made available in November 2022. Questions on gambling were not included in the SHS during the years 2018 to 2020.
+
+```{r packages, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyverse)
+library(readxl)
+library(httr)
+library(janitor)
+library(ggplot2)
+```
+
+## Percentage of respondents answering "Yes" to spending money on the following, split by age group
+
+```{r grid_1, out.width = "100%", echo=FALSE, message=FALSE, warning=FALSE, fig.width=10,fig.height=3, ,results="asis"}
+
+df_data <- read_csv("df_sheet.csv")
+
+df_plot <- df_data %>% 
+  filter(response == "Yes" & 
+           #sex == "Male" & 
+           #answer_code_map == "GALJ Spent any money on: Online gambling" & 
+           description =="age_grp")
+
+df_plot$measure_map <- gsub('Spent any money on:', '', df_plot$measure_map)
+
+measures <- unique(df_plot$measure_map)
+
+library(viridis)
+
+plot_sets <- c(1,2,3,4,5)
+
+for (i in seq_along(measures)){
+  
+  cat("  \n###",  measures[i], "  \n")
+  
+  df_plot_slice <- df_plot %>% filter(measure_map == measures[i])
+  c_scale_start <- min(df_plot_slice$value)/100
+  c_scale_end <- max(df_plot_slice$value)/100
+  
+  p <- ggplot(df_plot_slice, aes(year, category, fill=value)) +
+    geom_raster() +
+    scale_y_discrete(limits=rev, labels= c("75+", "65 to 74","55 to 64","45 to 54","35 to 44","25 to 34","16 to 24")) +
+    #scale_fill_viridis(direction = -1, option = "B", begin = c_scale_start, end = c_scale_end) +
+    scale_fill_viridis(direction = -1, option = "B", begin = 0.25, end = 0.75, alpha = 0.5) +
+    geom_hline(yintercept=c(1.5,2.5,3.5,4.5,5.5,6.5,7.5)) +
+    geom_text(aes(label = round(value, 1))) +
+    ylab("Age groups") +
+    theme_classic() + 
+    facet_wrap(~ sex, labeller = label_wrap_gen(), ncol=3) +
+    theme(panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      strip.background = element_blank(),
+      panel.border = element_rect(colour = NA, fill = NA),
+      strip.text = element_text(size = 15),
+      axis.text = element_text(size = 12))
+  
+  print(p)
+  cat("  \n")
+}
+
+```
+
+## Percentage of respondents answering "Yes" to spending money on the following, split by deprivation quintile
+
+```{r grid_2, out.width = "100%", echo=FALSE, message=FALSE, warning=FALSE, fig.width=10,fig.height=3, ,results="asis"}
+
+#df_data <- read_csv("df_sheet.csv")
+
+df_plot <- df_data %>% 
+  filter(response == "Yes" & 
+           #sex == "Male" & 
+           #answer_code_map == "GALJ Spent any money on: Online gambling" & 
+           description =="simd_quintiles")
+
+df_plot$measure_map <- gsub('Spent any money on:', '', df_plot$measure_map)
+
+df_plot$category <- ordered(df_plot$category, levels = c("least_deprived", "x2", "x3", "x4", "most_deprived"))
+
+measures <- unique(df_plot$measure_map)
+
+library(viridis)
+
+plot_sets <- c(1,2,3,4,5)
+
+for (i in seq_along(measures)){
+  
+  cat("  \n###",  measures[i], "  \n")
+  
+  df_plot_slice <- df_plot %>% filter(measure_map == measures[i])
+  c_scale_start <- min(df_plot_slice$value)/100
+  c_scale_end <- max(df_plot_slice$value)/100
+  
+  p <- ggplot(df_plot_slice, aes(year, category, fill=value)) +
+    geom_raster() +
+    #scale_y_discrete(limits=rev, labels= c("75+", "65 to 74","55 to 64","45 to 54","35 to 44","25 to 34","16 to 24")) +
+    #scale_fill_viridis(direction = -1, option = "B", begin = c_scale_start, end = c_scale_end) +
+    scale_fill_viridis(direction = -1, option = "B", begin = 0.25, end = 0.75, alpha = 0.5) +
+    geom_hline(yintercept=c(1.5,2.5,3.5,4.5,5.5,6.5,7.5)) +
+    geom_text(aes(label = round(value, 1))) +
+    ylab("Age groups") +
+    theme_classic() + 
+    facet_wrap(~ sex, labeller = label_wrap_gen(), ncol=3) +
+    theme(panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      strip.background = element_blank(),
+      panel.border = element_rect(colour = NA, fill = NA),
+      strip.text = element_text(size = 15),
+      axis.text = element_text(size = 12))
+  
+  print(p)
+  cat("  \n")
+}
+
+```
+
+## Percentage of respondents answering "Yes" to spending money on the following, split by income
+
+```{r grid_3, out.width = "100%", echo=FALSE, message=FALSE, warning=FALSE, fig.width=10,fig.height=3, ,results="asis"}
+
+#df_data <- read_csv("df_sheet.csv")
+
+df_plot <- df_data %>% 
+  filter(response == "Yes" & 
+           #sex == "Male" & 
+           #answer_code_map == "GALJ Spent any money on: Online gambling" & 
+           description =="equivalised_income")
+
+df_plot$measure_map <- gsub('Spent any money on:', '', df_plot$measure_map)
+
+#df_plot$category <- ordered(df_plot$category, levels = c("least_deprived", "x2", "x3", "x4", "most_deprived"))
+
+measures <- unique(df_plot$measure_map)
+
+library(viridis)
+
+plot_sets <- c(1,2,3,4,5)
+
+for (i in seq_along(measures)){
+  
+  cat("  \n###",  measures[i], "  \n")
+  
+  df_plot_slice <- df_plot %>% filter(measure_map == measures[i])
+  c_scale_start <- min(df_plot_slice$value)/100
+  c_scale_end <- max(df_plot_slice$value)/100
+  
+  p <- ggplot(df_plot_slice, aes(year, category, fill=value)) +
+    geom_raster() +
+    #scale_y_discrete(limits=rev, labels= c("75+", "65 to 74","55 to 64","45 to 54","35 to 44","25 to 34","16 to 24")) +
+    #scale_fill_viridis(direction = -1, option = "B", begin = c_scale_start, end = c_scale_end) +
+    scale_fill_viridis(direction = -1, option = "B", begin = 0.25, end = 0.75, alpha = 0.5) +
+    geom_hline(yintercept=c(1.5,2.5,3.5,4.5,5.5,6.5,7.5)) +
+    geom_text(aes(label = round(value, 1))) +
+    ylab("Age groups") +
+    theme_classic() + 
+    facet_wrap(~ sex, labeller = label_wrap_gen(), ncol=3) +
+    theme(panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      strip.background = element_blank(),
+      panel.border = element_rect(colour = NA, fill = NA),
+      strip.text = element_text(size = 15),
+      axis.text = element_text(size = 12))
+  
+  print(p)
+  cat("  \n")
+}
+
+```
+
