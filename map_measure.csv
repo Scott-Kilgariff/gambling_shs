@@ -1,9 +1,9 @@
 measure_orig,measure_map
 (D) Any gambling activity other than National Lottery,Any gambling activity other than National Lottery
 (D) Any online gambling activity other than National Lottery,Any online gambling activity other than National Lottery
-"(D) Number of gambling activities participated in within last 12 months (grouped) + Unweighted bases + Weighted bases BY (D) Equivalised Income Quintiles (age-standardised), 2014",Number of activities participated in within last 12 months
-"(D) Number of gambling activities participated in within last 12 months (grouped) + Unweighted bases + Weighted bases BY (D) NS-SEC 5 variable classification (hrp) (age-standardised), 2014",Number of activities participated in within last 12 months
-"(D) Number of gambling activities participated in within last 12 months (grouped) + Unweighted bases + Weighted bases BY SIMD 2012 quintiles (age-standardised), 2014",Number of activities participated in within last 12 months
+"(D) Number of gambling activities participated in within last 12 months (grouped) + Unweighted bases + Weighted bases BY (D) Equivalised Income Quintiles (age-standardised), 2014",Number of gambling activities
+"(D) Number of gambling activities participated in within last 12 months (grouped) + Unweighted bases + Weighted bases BY (D) NS-SEC 5 variable classification (hrp) (age-standardised), 2014",Number of gambling activities
+"(D) Number of gambling activities participated in within last 12 months (grouped) + Unweighted bases + Weighted bases BY SIMD 2012 quintiles (age-standardised), 2014",Number of gambling activities
 Any gambling activity other than National Lottery,Any gambling activity other than National Lottery
 "Any gambling activity other than National Lottery, (age-standardised)",Any gambling activity other than National Lottery
 Any gambling other than National Lottery,Any gambling activity other than National Lottery

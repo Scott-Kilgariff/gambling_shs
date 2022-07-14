@@ -11,16 +11,16 @@ Six,Six
 Seven,Seven
 Eight or more,Eight or more
 Never,Never
-Sometime,Sometime
+Sometime,Sometime or Occasionally
+Occasionally,Sometime or Occasionally
 Most times,Most times
+Most,Most times
+Fairly often,Fairly or very often
+Very often,Fairly or very often
 Everytime,Everytime
-Occasionally,Occasionally
-Fairly often,Fairly often
-Very often,Very often
-Most,Most
-Always,Always
-Non problem gambler,Yes
-Problem gambler 3 and above,No
+Always,Everytime
+Non problem gambler,No
+Problem gambler 3 and above,Yes
 Not a problem gambler according to either DSM or PGSI,No
 Problem gambler according to either DSM or PGSI,Yes
 Not a problem gambler according to DSM AND PGSI,No

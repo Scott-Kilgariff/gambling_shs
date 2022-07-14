@@ -52,10 +52,12 @@ create_plot <- function(df_plot_slice, y_lab){
 df_data <- read_csv("df_sheet.csv")
 
 df_plot <- df_data %>% 
-  filter(response == "Yes" & 
-           description =="age_grp")
+  filter(response_map == "Yes" & 
+           description =="age_grp" &
+           !is.na(measure_map))
 
 df_plot$measure_map <- gsub('Spent any money on:', '', df_plot$measure_map)
+df_plot$measure_map <- gsub('Spent money on:', '', df_plot$measure_map)
 
 measures <- unique(df_plot$measure_map)
 
@@ -81,10 +83,12 @@ for (i in seq_along(measures)){
 ```{r grid_2, out.width = "100%", echo=FALSE, message=FALSE, warning=FALSE, fig.width=10,fig.height=3, ,results="asis"}
 
 df_plot <- df_data %>% 
-  filter(response == "Yes" & 
-           description =="simd_quintiles")
+  filter(response_map == "Yes" & 
+           description =="simd_quintiles"&
+           !is.na(measure_map))
 
 df_plot$measure_map <- gsub('Spent any money on:', '', df_plot$measure_map)
+df_plot$measure_map <- gsub('Spent money on:', '', df_plot$measure_map)
 
 df_plot$category <- ordered(df_plot$category, levels = c("least_deprived", "x4", "x3", "x2", "most_deprived"))
 
@@ -112,10 +116,12 @@ for (i in seq_along(measures)){
 ```{r grid_3, out.width = "100%", echo=FALSE, message=FALSE, warning=FALSE, fig.width=10,fig.height=3, ,results="asis"}
 
 df_plot <- df_data %>% 
-  filter(response == "Yes" & 
-           description =="equivalised_income")
+  filter(response_map == "Yes" & 
+           description =="equivalised_income"&
+           !is.na(measure_map))
 
 df_plot$measure_map <- gsub('Spent any money on:', '', df_plot$measure_map)
+df_plot$measure_map <- gsub('Spent money on:', '', df_plot$measure_map)
 
 df_plot$category <- ordered(df_plot$category, levels = c("top_quintile", "x2", "x3", "x4", "bottom_quintile"))
 

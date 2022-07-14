@@ -23,7 +23,7 @@ years <- c(2017,
            2012)
 
 n <- 1
-# loop through a counter in the range 1:length(urls)
+# loop through a counter in the range 1:length(urls) - TAKES APPROX. 10 mins
 for (u in seq_along(urls)){
   
   reported_by <- c("age_grp", "ns_sec", "equivalised_income", "simd_quintiles")
@@ -58,8 +58,7 @@ for (u in seq_along(urls)){
     
     # loop through every nth sheet based on "skip" value
     for (t in seq(r,length(table_names), by=skip)){
-    #for (t in seq(1,36, by=5)){
-      
+
       # get the sheet name
       t_name <- table_names[t]
       
@@ -116,7 +115,7 @@ for (u in seq_along(urls)){
           # creat a lookup for the weighted and unweighted category bases
           bases_lookup <- data.frame(t(df_slice)) %>% 
             add_rownames() %>% 
-            select(c(1,5,6))
+            select(c(1,nrow(df_slice),nrow(df_slice)+1))
           
           # rename columns in lookup
           names(bases_lookup)[2] <- "Unweighted_bases"
@@ -134,6 +133,7 @@ for (u in seq_along(urls)){
           df_slice_ages <- df_slice_ages %>%
             left_join(bases_lookup, c("category" = "rowname")) %>%
             mutate(value = ifelse(value=="-", 0, value)) %>%
+            mutate(Weighted_bases = ifelse(Weighted_bases=="-", 0, Weighted_bases)) %>%
             mutate(value = round(as.numeric(value) * mult, 2))
           
           # create features called "measure" and "year" and assigne them with values
@@ -205,15 +205,54 @@ map_measure <- read.csv("map_measure.csv")
 # to the next and therefore need to be mapped to a consistent set
 map_answer_code <- read.csv("map_answer_code.csv")
 
-df_data <- df_data %>%
-  left_join(map_measure, c("measure" = "measure_orig"))
+# the responses being reported are not consistent from one year
+# to the next or between questions and therefore need to be mapped to a consistent set
+map_response <- read.csv("map_response.csv")
 
 df_data <- df_data %>%
-  left_join(map_answer_code, c("answer_code" = "answer_code"))
+  left_join(map_measure, c("measure" = "measure_orig")) %>%
+  left_join(map_answer_code, c("answer_code" = "answer_code")) %>%
+  left_join(map_response, c("response" = "response"))
 
 # export the data as a csv
 write.csv(df_data, "df_sheet.csv")
 
 # END
 
+measure_list <- c("Have you gone back another day to try to win back the money you had lost?",
+                  "Have you bet more than you could really afford to lose?",
+                  "Have you felt that you might have a problem with gambling?")
+
+for (d in seq_along(unique(df_data$description))){
+  
+  for (m in seq_along(measure_list)){
+    
+    x <- df_data %>%
+      filter(measure_map == measure_list[m] &
+               sex == "Male" &
+               description == unique(df_data$description)[d] &
+               #answer_code == "dsm1a (D) Answer to DSM item 1 (scale)" &
+               response_map != "Never")
+    
+    answer_code_list <- unique(x$answer_code)
+    
+    for (a in seq_along(answer_code_list)){
+      y <- x %>% filter(answer_code == answer_code_list[a])
+      
+      if (nrow(y) > length(unique(y$category))*length(unique(y$response_map))){
+      
+        p <- ggplot(y,aes(year, value)) + 
+          geom_line(na.rm=TRUE) +    #removing the NA values
+          geom_point(na.rm = TRUE) +
+          ggtitle(paste(measure_list[m],"\n",answer_code_list[a])) +
+          theme(plot.title = element_text(lineheight=.8, face="bold",size = 20)) +
+          theme(text = element_text(size=10)) +
+          xlab("Year") + ylab("Percentage") +
+          theme_bw() +
+          facet_grid(category ~ response_map)
+        print(p)
+      }
+    }
+  }
+}
 
