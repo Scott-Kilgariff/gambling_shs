@@ -1,0 +1,68 @@
+answer_code,answer_code_map
+Anyacty (D) Whether spent money on any gambling activity in last 12 months,Anyacty (D) Whether spent money on any gambling activity in last 12 months
+dsm10a (D) Answer to DSM item 10 (scale),dsm10a (D) Answer to DSM item 10 (scale)
+dsm1a (D) Answer to DSM item 1 (scale),dsm1a (D) Answer to DSM item 1 (scale)
+dsm2a (D) Answer to DSM item 2 (scale),dsm2a (D) Answer to DSM item 2 (scale)
+dsm3a (D) Answer to DSM item 3 (scale),dsm3a (D) Answer to DSM item 3 (scale)
+dsm4a (D) Answer to DSM item 4 (scale),dsm4a (D) Answer to DSM item 4 (scale)
+dsm5a (D) Answer to DSM item 5 (scale),dsm5a (D) Answer to DSM item 5 (scale)
+dsm6a (D) Answer to DSM item 6 (scale),dsm6a (D) Answer to DSM item 6 (scale)
+dsm7a (D) Answer to DSM item 7 (scale),dsm7a (D) Answer to DSM item 7 (scale)
+dsm8a (D) Answer to DSM item 8 (scale),dsm8a (D) Answer to DSM item 8 (scale)
+dsm9a (D) Answer to DSM item 9 (scale),dsm9a (D) Answer to DSM item 9 (scale)
+dsmprob (D) Whether a DSM problem gambler,dsmprob (D) Whether a DSM problem gambler
+"GALA Have you spent any money on: Tickets for the National Lottery Draw, including Thunderball and Euromillions and tickets bought online (SelfCDat.GALA)",GALA Spent money on: Tickets for the National Lottery
+GALA Spent money on: Tickets for the National Lottery,GALA Spent money on: Tickets for the National Lottery
+GALB Have you spent any money on: Scratchcards (but not online or newspaper or magazine scratchcards) (SelfCDat.GALB),GALB Spent money on: Scratchcards (not online or newspaper or magazine scratchcards)
+GALB Spent money on: Scratchcards (not online or newspaper or magazine scratchcards),GALB Spent money on: Scratchcards (not online or newspaper or magazine scratchcards)
+"GALC Have you spent any money on: Tickets for any other lottery, including charity lotteries (SelfCDat.GALC)","GALC Spent money on: Tickets for any other lottery, including charity lotteries"
+"GALC Spent money on: Tickets for any other lottery, including charity lotteries","GALC Spent money on: Tickets for any other lottery, including charity lotteries"
+"GALD Have you spent any money on: Bingo cards or tickets, including playing at a bingo hall (not online) (SelfCDat.GALD)","GALD Spent money on: Bingo cards or tickets, including playing at a bingo hall (not online)"
+"GALD Spent money on: Bingo cards or tickets, including playing at a bingo hall (not online)","GALD Spent money on: Bingo cards or tickets, including playing at a bingo hall (not online)"
+GALE Have you spent any money on: The football pools (SelfCDat.GALE),GALE Spent money on: The football pools
+GALE Spent money on: The football pools,GALE Spent money on: The football pools
+GALF Have you spent any money on: Fruit or slot machines (SelfCDat.GALF),GALF Spent money on: Fruit or slot machines
+GALF Spent money on: Fruit or slot machines,GALF Spent money on: Fruit or slot machines
+"GALG Have you spent any money on: Virtual gaming machines in a bookmakers to bet on virtual roulette, poker, blackjack or other games (SelfCDat.GALG)",GALG Spent any money on: Virtual gaming machines in a bookmakers
+GALG Spent any money on: Virtual gaming machines in a bookmakers,GALG Spent any money on: Virtual gaming machines in a bookmakers
+GALH Have you spent any money on: Playing poker in a pub tournament/ league or at a club (SelfCDat.GALH),GALH Spent any money on: Playing poker in a pub tournament/ league or at a club
+GALH Spent any money on: Playing poker in a pub tournament/ league or at a club,GALH Spent any money on: Playing poker in a pub tournament/ league or at a club
+"GALJ Have you spent any money on: Online gambling like playing poker, bingo, instant win/scratchcard games, slot machine style games or casino games for money (SelfCDat.GALJ)",GALJ Spent any money on: Online gambling
+GALJ Spent any money on: Online gambling,GALJ Spent any money on: Online gambling
+"GALK Have you spent any money on: Betting on horse races in a bookmaker’s, by phone or at the track (SelfCDat.GALK)",GALK Spent money on: Betting on horse races
+GALK Spent money on: Betting on horse races,GALK Spent money on: Betting on horse races
+"GALLX Have you spent any money on: Betting on dog races in a bookmaker’s, by phone or at the track (SelfCDat.GALLX)",GALLX Spent any money on: Betting on dog races
+GALLX Spent any money on: Betting on dog races,GALLX Spent any money on: Betting on dog races
+"GALM Have you spent any money on: Betting on sports events in a bookmaker’s, by phone or at the venue (SelfCDat.GALM)",GALM Spent money on: Betting on sports events
+GALM Spent money on: Betting on sports events,GALM Spent money on: Betting on sports events
+"GALN Have you spent any money on: Betting on other events in a bookmaker’s, by phone or at the venue (SelfCDat.GALN)",GALN Spent money on: Betting on other events
+GALN Spent money on: Betting on other events,GALN Spent money on: Betting on other events
+GALO Have you spent any money on: Spread-betting (SelfCDat.GALO),GALO Spent money on: Spread-betting
+GALO Spent money on: Spread-betting,GALO Spent money on: Spread-betting
+"GALP Have you spent any money on: Private betting, playing cards or games for money with friends, family or colleagues (SelfCDat.GALP)",GALP Spent money on: Private betting
+GALP Spent money on: Private betting,GALP Spent money on: Private betting
+GALQ Have you spent any money on: Another form of gambling in the last 12 months (SelfCDat.GALQ),GALQ Spent any money on: Another form of gambling
+GALQ Spent any money on: Another form of gambling,GALQ Spent any money on: Another form of gambling
+"GALS Have you spent any money on: Table games (roulette, cards or dice) in a casino (SelfCDat.GALS)","GALS Spent money on: Table games (roulette, cards or dice) in a casino"
+"GALS Spent money on: Table games (roulette, cards or dice) in a casino","GALS Spent money on: Table games (roulette, cards or dice) in a casino"
+GALT Have you spent any money on: Online betting with a bookmaker on any event or sport (SelfCDat.GALT),GALT Spent any money on: Online betting with a bookmaker on any event or sport
+GALT Spent any money on: Online betting with a bookmaker on any event or sport,GALT Spent any money on: Online betting with a bookmaker on any event or sport
+GALU Have you spent any money on: Betting exchange (SelfCDat.GALU),GALU Spent money on: Betting exchange
+GALU Spent money on: Betting exchange,GALU Spent money on: Betting exchange
+Nactygr (D) Number of activities participated in within last 12 months (grouped),Nactygr (D) Number of activities participated in within last 12 months (grouped)
+Nactygr (D) Number of gambling activities participated in within last 12 months (grouped),Nactygr (D) Number of activities participated in within last 12 months (grouped)
+Nactygr Number of activities grouped,Nactygr (D) Number of activities participated in within last 12 months (grouped)
+NotLot (D) Any gambling activity other than National Lottery,NotLot (D) Any gambling activity other than National Lottery
+onlinegam (D) Any online gambling activity other than National Lottery,onlinegam (D) Any online gambling activity other than National Lottery
+PGSI1 (D) Answer to PGSI item 1,PGSI1 (D) Answer to PGSI item 1
+PGSI2 (D) Answer to PGSI item 2,PGSI2 (D) Answer to PGSI item 2
+PGSI3 (D) Answer to PGSI item 3,PGSI3 (D) Answer to PGSI item 3
+PGSI4 (D) Answer to PGSI item 4,PGSI4 (D) Answer to PGSI item 4
+PGSI5 (D) Answer to PGSI item 5,PGSI5 (D) Answer to PGSI item 5
+PGSI6 (D) Answer to PGSI item 6,PGSI6 (D) Answer to PGSI item 6
+PGSI7 (D) Answer to PGSI item 7,PGSI7 (D) Answer to PGSI item 7
+PGSI8 (D) Answer to PGSI item 8,PGSI8 (D) Answer to PGSI item 8
+PGSI9 (D) Answer to PGSI item 9,PGSI9 (D) Answer to PGSI item 9
+"PGSIprob (D) PGSI problem gambling score, grouped","PGSIprob (D) PGSI problem gambling score, grouped"
+PROBGAM (D) Whether a problem gambler according to either DSM OR PGSI,PROBGAM (D) Whether a problem gambler according to either DSM OR PGSI
+PROBGAM2 (D) Whether a problem gambler according to PGSI AND DSM,PROBGAM2 (D) Whether a problem gambler according to PGSI AND DSM

@@ -1,0 +1,34 @@
+response,response_map
+"Yes, spent money  on 1 or more gambling activities",Yes
+Did not spend money on gambling activites in past year,No
+None,None
+One,One
+Two,Two
+Three,Three
+Four,Four
+Five,Five
+Six,Six
+Seven,Seven
+Eight or more,Eight or more
+Never,Never
+Sometime,Sometime
+Most times,Most times
+Everytime,Everytime
+Occasionally,Occasionally
+Fairly often,Fairly often
+Very often,Very often
+Most,Most
+Always,Always
+Non problem gambler,Yes
+Problem gambler 3 and above,No
+Not a problem gambler according to either DSM or PGSI,No
+Problem gambler according to either DSM or PGSI,Yes
+Not a problem gambler according to DSM AND PGSI,No
+Problem gambler according to BOTH DSM AND PGSI,Yes
+4 or more,4 or more
+Non problem gambler/non gambler,Non problem gambler/non gambler
+Low risk gambler,Low risk gambler
+Moderate risk gambler,Moderate risk gambler
+Problem gambler,Problem gambler
+Yes,Yes
+No,No
