@@ -27,7 +27,7 @@ library(viridis)
 
 ```
 
-
+##Responses to Likert type questions split by employment type
 ```{r grid_1, out.width = "100%", echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=10, ,results="asis"}
 
 df_data <- read_csv("df_sheet.csv")
@@ -66,40 +66,38 @@ df_data$category_map <- ordered(df_data$category_map,
                                            'Top quintile earners', 'Top quintile SIMD', 'x2', 'x3', 'x4', '5th quintile earners', '5th quintil SIMD')
 )
 
+desc <- "ns_sec"
 
+df_data <- df_data %>% filter(description == desc)
 
-for (d in seq_along(unique(df_data$description))){
+for (m in seq_along(measure_list)){
   
-  for (m in seq_along(measure_list)){
-    
-    x <- df_data %>%
-      filter(measure_map == measure_list[m] &
-               #sex == "Male" &
-               description == unique(df_data$description)[d] &
-               response_map != "Never")
-    
-    answer_code_list <- unique(x$answer_code)
-    
-    for (a in seq_along(answer_code_list)){
-      y <- x %>% filter(answer_code == answer_code_list[a])
+  x <- df_data %>%
+    filter(measure_map == measure_list[m] &
+             response_map != "Never")
+  
+  answer_code_list <- unique(x$answer_code)
+  
+  for (a in seq_along(answer_code_list)){
+    y <- x %>% filter(answer_code == answer_code_list[a])
 
-      if (nrow(y) > length(unique(y$category))*length(unique(y$response_map))*length(unique(y$sex))){
-      
-        p <- ggplot(y,aes(year, value, colour = sex)) + 
-          geom_line(na.rm=TRUE) +    #removing the NA values
-          geom_point(na.rm = TRUE) +
-          ggtitle(paste(measure_list[m],"\n",answer_code_list[a],"\n response grouping:",unique(df_data$description)[d])) +
-          theme(plot.title = element_text(lineheight=.8, face="bold",size = 20)) +
-          theme(text = element_text(size=10)) +
-          xlab("Year") + ylab("Percentage") +
-          theme_bw() +
-          facet_grid(category_map ~ response_map)+
-          scale_color_manual(values=c("blue", "green","red"))
-        print(p)
-      }
+    if (nrow(y) > length(unique(y$category))*length(unique(y$response_map))*length(unique(y$sex))){
+    
+      p <- ggplot(y,aes(year, value, colour = sex)) + 
+        geom_line(na.rm=TRUE) +    #removing the NA values
+        geom_point(na.rm = TRUE) +
+        ggtitle(paste(measure_list[m],"\n",answer_code_list[a],"\n response grouping: Employment type")) +
+        theme(plot.title = element_text(lineheight=.8, face="bold",size = 20)) +
+        theme(text = element_text(size=10)) +
+        xlab("Year") + ylab("Percentage") +
+        theme_bw() +
+        facet_grid(category_map ~ response_map)+
+        scale_color_manual(values=c("blue", "green","red"))
+      print(p)
     }
   }
 }
+
 
 ```
 
