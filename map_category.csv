@@ -1,0 +1,20 @@
+category,category_map
+x16_24,16 to 24
+x25_34,25 to 34
+x35_44,35 to 44
+x45_54,45 to 54
+x55_64,55 to 65
+x65_74,65 to 74
+x75,75 plus
+managerial_and_professional_occupations,Manager & prof.
+intermediate_occupations,Intermediate
+small_employers_and_own_account_workers,Small emps & own account
+lower_supervisory_and_technical_occupations,Lower supervisory & tech.
+semi_routine_and_routine_occupations,Semi routine and routine
+top_quintile,Top quintile earners
+x2,x2
+x3,x3
+x4,x4
+bottom_quintile,5th quintile earners
+least_deprived,Top quintile SIMD
+most_deprived,5th quintil SIMD
