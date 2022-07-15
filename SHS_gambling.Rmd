@@ -117,7 +117,7 @@ for (i in seq_along(measures)){
 
 df_plot <- df_data %>% 
   filter(response_map == "Yes" & 
-           description =="equivalised_income"&
+           description =="equivalised_income" &
            !is.na(measure_map))
 
 df_plot$measure_map <- gsub('Spent any money on:', '', df_plot$measure_map)
