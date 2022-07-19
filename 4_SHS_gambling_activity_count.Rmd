@@ -43,7 +43,7 @@ df_data <- df_data %>%
   left_join(map_category, by = c("category" = "category"))
 
 df_data$category_map <- ordered(df_data$category_map, 
-                                levels = c('16 to 24', '25 to 34', '35 to 44', '45 to 54', '55 to 65', '65 to 74', '75 plus', 
+                                levels = c('All populations', '16 to 24', '25 to 34', '35 to 44', '45 to 54', '55 to 65', '65 to 74', '75 plus', 
                                            'Manager & prof.', 'Intermediate', 'Small emps & own account', 'Lower supervisory & tech.', 'Semi routine and routine', 
                                            'Top quintile earners', 'Top quintile SIMD', 'x2', 'x3', 'x4', '5th quintile earners', '5th quintil SIMD')
 )
@@ -53,10 +53,10 @@ for (d in seq_along(unique(df_data$description))){
     x <- df_data %>%
     filter(description == unique(df_data$description)[d])
   
-  answer_code_list <- unique(x$answer_code)
+  answer_code_list <- unique(x$answer_code_map)
   
   for (a in seq_along(answer_code_list)){
-    y <- x %>% filter(answer_code == answer_code_list[a])
+    y <- x %>% filter(answer_code_map == answer_code_list[a])
 
     if (nrow(y) > length(unique(y$category))*length(unique(y$response_map))*length(unique(y$sex))){
     

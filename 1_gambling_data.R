@@ -121,6 +121,10 @@ for (u in seq_along(urls)){
           names(bases_lookup)[2] <- "Unweighted_bases"
           names(bases_lookup)[3] <- "Weighted_bases"
           
+          bases_lookup <- bases_lookup %>%
+            mutate(Unweighted_bases = as.numeric(as.character(Unweighted_bases))) %>%
+            mutate(Weighted_bases = as.numeric(as.character(Weighted_bases)))
+          
           # pre 2014 the percentage figures were given as values between 0 and 1
           if (year<2015){
             mult <- 100
@@ -212,9 +216,24 @@ map_response <- read.csv("map_response.csv")
 df_data <- df_data %>%
   left_join(map_measure, c("measure" = "measure_orig")) %>%
   left_join(map_answer_code, c("answer_code" = "answer_code")) %>%
-  left_join(map_response, c("response" = "response"))
+  left_join(map_response, c("response" = "response")) %>%
+  select(-c("measure", "answer_code", "response"))
+
+# get the weighted mean for all respondents
+df_data_mean <- df_data %>%
+  filter(description == "age_grp") %>%
+  group_by(year, sex, measure_map, answer_code_map, response_map, description) %>%
+  summarize(Unweighted_bases_sum = sum(Unweighted_bases),Weighted_bases_sum = sum(Weighted_bases), value_mean = weighted.mean(value,Weighted_bases)) %>%
+  mutate(description = "mean") %>%
+  mutate(category = "All populations") %>%
+  rename(value = value_mean) %>%
+  rename(Weighted_bases = Weighted_bases_sum) %>%
+  rename(Unweighted_bases = Unweighted_bases_sum)
+
+df_data_all <- df_data %>%
+  bind_rows(df_data_mean)
 
 # export the data as a csv
-write.csv(df_data, "df_sheet.csv")
+write.csv(df_data_all, "df_sheet.csv")
 
 # END
