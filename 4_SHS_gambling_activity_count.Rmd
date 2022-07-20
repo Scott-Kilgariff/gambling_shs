@@ -35,7 +35,7 @@ df_data <- read_csv("df_sheet.csv")
 df_data <- df_data %>%
   filter(measure_map == "Number of gambling activities" & year > 2012)
 
-df_data$response_map <- ordered(df_data$response_map, levels = c('Eight or more', 'Seven', 'Six', 'Five', 'Four', 'Three', 'Two', 'One', 'None'))
+df_data$response_map <- ordered(df_data$response_map, levels = c('All populations', 'Eight or more', 'Seven', 'Six', 'Five', 'Four', 'Three', 'Two', 'One', 'None'))
 
 map_category <- read.csv("map_category.csv")
 
